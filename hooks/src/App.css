@@ -1,0 +1,12 @@
+.weather{
+    background-image: url(https://www.crushpixel.com/big-static18/preview4/weather-icon-sunny-rainy-weather-2839352.jpg);
+}
+.todo{
+    background-image: url(./pages/todo/todo.jpg);
+}
+.gallery{
+    background-image: url(./gallery.jpg);
+}
+.about{
+    background-image: url(./firstImage.png);
+}
