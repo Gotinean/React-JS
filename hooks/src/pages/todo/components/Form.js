@@ -8,22 +8,27 @@ const Form = ({ setInputText, todos, setTodos, inputText, setStatus }) => {
   };
   const submitTodoHandler = (e) => {
     e.preventDefault();
+    if(inputText != ""){
     setTodos([
       ...todos, { text: inputText, completed: false, id: Math.random() * 1000 }
     ]);
+  }
+  else{}
     setInputText("");
   };
   const statusHandler = (e) => {
-    setStatus(e.target.value);
+      setStatus(e.target.value);
   };
   return (
     <form className="container">
+    <div className="row">
       <input placeholder="Введите дело" value={inputText} onChange={inputTextHandler} type="text" className="input-group-text" />
       <button onClick={submitTodoHandler} className="btn btn-primary" type="submit">
         +
       </button>
-      <div className="select-todo">
-        <select onChange={statusHandler} name="todos" className="form-select" aria-label="size 3 select example">
+      </div>
+      <div className="row">
+        <select onChange={statusHandler} name="todos" className="form-select">
           <option value="all">All</option>
           <option value="completed">Completed</option>
           <option value="uncompleted">Uncompleted</option>

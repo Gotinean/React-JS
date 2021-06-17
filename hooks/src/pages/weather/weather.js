@@ -22,7 +22,7 @@ class WeatherApp extends React.Component {
         if (city) {
             const api_url = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`);
             const data = await api_url.json();
-            if (data.cod !== 404) {
+            if (data.cod === 200) {
                 console.log(data);
 
                 const sunset = data.sys.sunset

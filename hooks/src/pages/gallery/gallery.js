@@ -10,7 +10,7 @@ const Gallery = () => {
     useEffect(() => {
         if (fetching) {
             console.log('fetching')
-            axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=10&_page=${currentPage}`)
+            axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=14&_page=${currentPage}`)
                 .then(response => {
                     setPhotos([...photos, ...response.data])
                     setCurrentPage(prevState => prevState + 1)
@@ -18,7 +18,7 @@ const Gallery = () => {
                 })
                 .finally(() => setFetching(false));
         }
-    }, [fetching, currentPage, photos])
+    }, [fetching])
 
     useEffect(() => {
         document.addEventListener('scroll', scrollHandler)
@@ -37,12 +37,14 @@ const Gallery = () => {
 
     return (
         <div className="container">
+        <div className="gridgallery">
             {photos.map(photo =>
-                <div key={photo.id}>
-                    <div>{photo.id}. {photo.title}</div>
-                    <img src={photo.thumbnailUrl} alt="" />
+                <div className="gallery-item" key={photo.id}>
+                    <div className="text-gallery">{photo.id}. {photo.title}</div>
+                    <img className="image-gallery" src={photo.thumbnailUrl} alt="" />
                 </div>
             )}
+            </div>
         </div>
     )
 }

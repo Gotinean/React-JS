@@ -10,3 +10,36 @@
 .about{
     background-image: url(./firstImage.png);
 }
+.text{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large ;
+    margin: 15px;
+    height: 1px;
+    width: 1fr;
+}
+.buttons{
+    margin: 15px;
+}
+.gridtodo{
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+    justify-content: center;
+}
+.gridgallery{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    position: 100%;
+    
+}
+.gallery-item{
+    width: 400px;
+    margin: 10px;
+    align-self: flex-end;
+}
+.text-gallery{
+    
+
+}
+.image-gallery{
+}
