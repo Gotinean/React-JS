@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Cart.module.css";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import CartItem from "./CartItem/CartItem";
@@ -21,15 +22,7 @@ const Cart = ({ cart }) => {
     setTotalItems(items);
     setTotalPrice(price);
     
-  }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
-  function checkout() {
-    
-    prompt('Введите имя')
-    prompt('Введите данные банковской карты')
-    prompt('Введите адрес доставки')
-    alert("Данные карты неверны! Перепроверьте и попробуйте снова!")
-  
-}
+  }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);  
 
   return (
     <div className={styles.cart}>
@@ -44,9 +37,11 @@ const Cart = ({ cart }) => {
           <span>TOTAL: ({totalItems} items)</span>
           <span>$ {totalPrice}</span>
         </div>
-        <button className={styles.summary__checkoutBtn} onClick={checkout}>
+        <Link to="/checkout">
+        <button className={styles.summary__checkoutBtn}>
           Proceed To Checkout
         </button>
+        </Link>
       </div>
     </div>
   );
