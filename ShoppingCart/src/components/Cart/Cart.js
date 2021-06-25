@@ -21,30 +21,51 @@ const Cart = ({ cart }) => {
 
     setTotalItems(items);
     setTotalPrice(price);
-    
-  }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);  
 
-  return (
-    <div className={styles.cart}>
-      <div className={styles.cart__items}>
-        {cart.map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
-      </div>
-      <div className={styles.cart__summary}>
-        <h4 className={styles.summary__title}>Cart Summary</h4>
-        <div className={styles.summary__price}>
-          <span>TOTAL: ({totalItems} items)</span>
-          <span>$ {totalPrice}</span>
+  }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
+  if (totalItems) {
+    return (
+      <div className={styles.cart}>
+        <div className={styles.cart__items}>
+          {cart.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
         </div>
-        <Link to="/checkout">
-        <button className={styles.summary__checkoutBtn}>
-          Proceed To Checkout
-        </button>
-        </Link>
+        <div className={styles.cart__summary}>
+          <h4 className={styles.summary__title}>Cart Summary</h4>
+          <div className={styles.summary__price}>
+            <span>TOTAL: ({totalItems} items)</span>
+            <span>$ {totalPrice}</span>
+          </div>
+          <Link to="/checkout">
+            <button className={styles.summary__checkoutBtn}>
+              Proceed To Checkout
+            </button>
+          </Link>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className={styles.cart}>
+        <div className={styles.cart__items}>
+          {cart.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+        </div>
+        <div className={styles.cart__summary}>
+          <h4 className={styles.summary__title}>Cart Summary</h4>
+          <div className={styles.summary__price}>
+            <span>TOTAL: ({totalItems} items)</span>
+            <span>$ {totalPrice}</span>
+          </div>
+          <button className={styles.summary__checkoutBtn}>
+            Proceed To Checkout
+          </button>
+        </div>
+      </div>
+    );
+  }
 };
 const mapStateToProps = (state) => {
   return {
